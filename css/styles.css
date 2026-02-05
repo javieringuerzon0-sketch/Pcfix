@@ -510,3 +510,47 @@ header.scrolled .logo-header {
     transform: translateX(100%);
   }
 }
+
+/* ===== PREMIUM BADGES ANIMATIONS ===== */
+.badge-premium {
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.badge-premium:hover {
+  transform: scale(1.05);
+}
+
+/* Animación de pulso lento para el fondo */
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 3s ease-in-out infinite;
+}
+
+/* Efecto de brillo suave continuo */
+@keyframes soft-glow {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(0, 229, 255, 0.4);
+  }
+}
+
+.badge-premium::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  box-shadow: 0 0 15px rgba(0, 229, 255, 0.1);
+  animation: soft-glow 2s ease-in-out infinite;
+  pointer-events: none;
+}
