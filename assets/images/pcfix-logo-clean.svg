@@ -1,0 +1,46 @@
+<svg width="250" height="100" viewBox="0 0 250 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Orca Icon - Estilo Minimalista -->
+  <g transform="translate(15, 20)">
+    <!-- Cuerpo principal de la orca -->
+    <path d="M25 30 C15 30, 8 25, 5 18 C3 14, 2 10, 3 6 C4 3, 6 1, 9 0.5 C12 0, 15 0.5, 18 2 C20 3, 22 4.5, 24 6 C28 9, 32 13, 35 18 C38 23, 40 28, 40 33 C40 36, 39 38, 37 40 C35 42, 32 43, 29 42 C27 41.5, 25.5 40, 24 38 L24 33 Z"
+          fill="white" opacity="0.95"/>
+
+    <!-- Aleta dorsal -->
+    <path d="M22 15 L25 8 L28 15 Z" fill="white" opacity="0.9"/>
+
+    <!-- Mancha blanca característica -->
+    <ellipse cx="15" cy="12" rx="3.5" ry="4" fill="white" opacity="0.3"/>
+
+    <!-- Cola -->
+    <path d="M3 15 C1 16, 0 18, 0 20 C0 22, 1 24, 3 25 L8 23 L3 20 Z"
+          fill="white" opacity="0.85"/>
+
+    <!-- Ojo -->
+    <circle cx="32" cy="20" r="1.5" fill="white"/>
+  </g>
+
+  <!-- Texto PcFix -->
+  <text x="75" y="48"
+        font-family="Manrope, -apple-system, BlinkMacSystemFont, sans-serif"
+        font-weight="700"
+        font-size="32"
+        fill="white"
+        letter-spacing="-0.5">
+    Pc<tspan fill="#E0E0E0">Fix</tspan>
+  </text>
+
+  <!-- Subtítulo LA PAZ -->
+  <text x="75" y="65"
+        font-family="Manrope, -apple-system, BlinkMacSystemFont, sans-serif"
+        font-weight="500"
+        font-size="11"
+        fill="rgba(255,255,255,0.5)"
+        letter-spacing="3">
+    LA PAZ
+  </text>
+
+  <!-- Línea decorativa sutil -->
+  <line x1="75" y1="70" x2="145" y2="70"
+        stroke="rgba(255,255,255,0.15)"
+        stroke-width="1"/>
+</svg>

@@ -1,0 +1,18 @@
+<svg width="200" height="60" viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fondo del ícono -->
+  <rect x="8" y="8" width="44" height="44" rx="8" fill="white"/>
+
+  <!-- Ícono de herramienta/tuerca -->
+  <path d="M30 18L26 22L22 18L18 22V38L22 42L26 38L30 42L34 38V22L30 18Z" fill="#000000"/>
+  <circle cx="26" cy="30" r="4" fill="white"/>
+
+  <!-- Texto PcFix -->
+  <text x="65" y="38" font-family="Manrope, sans-serif" font-weight="800" font-size="24" fill="white">
+    Pc<tspan fill="#0EA5E9">Fix</tspan>
+  </text>
+
+  <!-- Subtítulo -->
+  <text x="65" y="48" font-family="Manrope, sans-serif" font-weight="400" font-size="8" fill="rgba(255,255,255,0.6)" letter-spacing="2">
+    LA PAZ
+  </text>
+</svg>

@@ -1,0 +1,51 @@
+<svg width="200" height="50" viewBox="0 0 200 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Ícono Geométrico Minimalista - Chip/Procesador -->
+  <g transform="translate(5, 10)">
+    <!-- Cuadrado principal con esquinas redondeadas -->
+    <rect x="5" y="5" width="20" height="20" rx="4"
+          stroke="white" stroke-width="1.5" fill="none" opacity="0.9"/>
+
+    <!-- Grid interno - circuito -->
+    <line x1="12" y1="8" x2="12" y2="22" stroke="white" stroke-width="0.5" opacity="0.6"/>
+    <line x1="18" y1="8" x2="18" y2="22" stroke="white" stroke-width="0.5" opacity="0.6"/>
+    <line x1="8" y1="12" x2="22" y2="12" stroke="white" stroke-width="0.5" opacity="0.6"/>
+    <line x1="8" y1="18" x2="22" y2="18" stroke="white" stroke-width="0.5" opacity="0.6"/>
+
+    <!-- Puntos de conexión -->
+    <circle cx="12" cy="12" r="1" fill="white" opacity="0.8"/>
+    <circle cx="18" cy="18" r="1" fill="white" opacity="0.8"/>
+    <circle cx="12" cy="18" r="1" fill="rgba(0,229,255,0.6)"/>
+    <circle cx="18" cy="12" r="1" fill="rgba(0,229,255,0.6)"/>
+
+    <!-- Conectores externos (pins del chip) -->
+    <!-- Izquierda -->
+    <line x1="0" y1="10" x2="5" y2="10" stroke="white" stroke-width="1" opacity="0.5"/>
+    <line x1="0" y1="15" x2="5" y2="15" stroke="white" stroke-width="1" opacity="0.5"/>
+    <line x1="0" y1="20" x2="5" y2="20" stroke="white" stroke-width="1" opacity="0.5"/>
+
+    <!-- Derecha -->
+    <line x1="25" y1="10" x2="30" y2="10" stroke="white" stroke-width="1" opacity="0.5"/>
+    <line x1="25" y1="15" x2="30" y2="15" stroke="white" stroke-width="1" opacity="0.5"/>
+    <line x1="25" y1="20" x2="30" y2="20" stroke="white" stroke-width="1" opacity="0.5"/>
+  </g>
+
+  <!-- Tipografía Principal - Ultra limpia -->
+  <text x="50" y="27"
+        font-family="Manrope, -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif"
+        font-weight="700"
+        font-size="24"
+        fill="white"
+        letter-spacing="-0.5">
+    PcFix
+  </text>
+
+  <!-- Subtítulo minimalista -->
+  <text x="50" y="37"
+        font-family="Manrope, -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif"
+        font-weight="500"
+        font-size="8"
+        fill="rgba(255,255,255,0.4)"
+        letter-spacing="2">
+    LA PAZ
+  </text>
+</svg>

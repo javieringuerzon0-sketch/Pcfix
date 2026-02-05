@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(start index.html)",
+      "Bash(npm install:*)",
+      "Bash(npm run dev:*)",
+      "Bash(timeout 3 cmd:*)",
+      "Bash(start:*)",
+      "WebFetch(domain:www.facebook.com)",
+      "Bash(ls:*)",
+      "Bash(curl:*)"
+    ]
+  }
+}
