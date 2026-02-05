@@ -285,5 +285,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ===== CONSOLE LOG INFO =====
-console.log('%c✨ PcFix - Reparación Profesional de Computadoras', 'color: #00E5FF; font-size: 16px; font-weight: bold; background: #000; padding: 10px;');
-console.log('%cDesarrollado con ❤️ usando Vite + TailwindCSS', 'color: #888; font-size: 12px;');
+console.log('%c✨ PcFix Pro - Reparación Profesional de Computadoras', 'color: #00E5FF; font-size: 16px; font-weight: bold; background: #000; padding: 10px;');
+console.log('%cDesarrollado con ❤️ usando Vite + TailwindCSS + Lucide', 'color: #888; font-size: 12px;');
+console.log('%c✅ Versión: 1.0.1 - Todos los sistemas operativos', 'color: #0f0; font-size: 10px;');
