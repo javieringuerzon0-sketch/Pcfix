@@ -458,3 +458,55 @@ header.scrolled .logo-header {
   -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
   mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
 }
+
+/* ===== PREMIUM CTA BUTTON ANIMATIONS ===== */
+.cta-premium {
+  position: relative;
+  padding: 1px;
+  transition: transform 0.3s ease;
+}
+
+.cta-premium:hover {
+  transform: translateY(-2px);
+}
+
+/* Animación de gradiente en movimiento */
+@keyframes gradient-xy {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-gradient-xy {
+  background-size: 200% 200%;
+  animation: gradient-xy 3s ease infinite;
+}
+
+/* Animación de pulso suave para el glow */
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.3;
+    box-shadow: 0 0 20px rgba(0, 229, 255, 0.2);
+  }
+  50% {
+    opacity: 0.5;
+    box-shadow: 0 0 40px rgba(0, 229, 255, 0.4);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Efecto shimmer mejorado */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
