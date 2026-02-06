@@ -5,31 +5,31 @@
 
 const CLIENT_CONFIG = {
   // INFORMACIÓN DEL NEGOCIO
-  businessName: "PcFix Pro",
-  heroTitle: "PcFix",
-  heroSubtitle: "Pro",
-  heroVersion: "X1",
-  tagline: "Servicio Profesional v2.0",
-  description: "El nuevo estándar en reparación y mantenimiento de computadoras. Soluciones tecnológicas con precisión profesional.",
+  businessName: "ServiExpress Electrónik",
+  heroTitle: "Servi",
+  heroSubtitle: "Express",
+  heroVersion: "PRO",
+  tagline: "Servicio Técnico Especializado v2.0",
+  description: "Reparación y mantenimiento de dispositivos electrónicos con tecnología de punta. Servicio rápido, garantizado y profesional.",
 
   // CONTACTO
-  whatsapp: "526121972004", // Número con código de país
-  whatsappDisplay: "+52 612 197 2004", // Formato para mostrar
-  facebook: "https://www.facebook.com/pcfixlapaz",
-  email: "contacto@pcfix.com",
+  whatsapp: "526123483327", // Número con código de país
+  whatsappDisplay: "+52 612 348 3327", // Formato para mostrar
+  facebook: "https://www.facebook.com/serviexpress.electronik",
+  email: "dr.cell@icloud.com",
 
   // UBICACIÓN
   location: "La Paz, BCS",
   locationFull: "La Paz, Baja California Sur",
 
   // BRANDING
-  logo: "assets/images/pcfix-clean-pro.svg",
-  favicon: "assets/images/pcfix-clean-pro.svg",
+  logo: "assets/images/serviexpress-logo.svg",
+  favicon: "assets/images/serviexpress-logo.svg"
 
   // SEO
-  metaTitle: "PcFix Pro | Reparación y Mantenimiento de Computadoras en La Paz, BCS",
-  metaDescription: "Especialistas en reparación de PC, laptops y consolas en La Paz, BCS. Diagnóstico avanzado, mantenimiento preventivo y servicio profesional 24/7.",
-  ogUrl: "https://pcfix-lapaz.vercel.app/",
+  metaTitle: "ServiExpress Electrónik | Reparación Profesional de Dispositivos Electrónicos",
+  metaDescription: "Especialistas en reparación de smartphones, tablets, computadoras y electrónicos en La Paz, BCS. Servicio técnico garantizado 24/7.",
+  ogUrl: "https://serviexpress-electronik.vercel.app/",
   ogImage: "assets/images/og-preview.jpg",
 
   // ESTADÍSTICAS (Hero)
@@ -44,8 +44,8 @@ const CLIENT_CONFIG = {
 
   // FOOTER
   footerYear: "2025",
-  footerCompany: "PcFix, Inc.",
-  footerSlogan: "Reparación Profesional de Computadoras"
+  footerCompany: "ServiExpress Electrónik",
+  footerSlogan: "Reparación Profesional de Dispositivos Electrónicos"
 };
 
 // Exportar configuración

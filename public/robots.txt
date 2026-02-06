@@ -1,0 +1,21 @@
+# robots.txt para ServiExpress Electrónik
+User-agent: *
+Allow: /
+Sitemap: https://serviexpress-murex.vercel.app/sitemap.xml
+
+# Permitir todos los bots de búsqueda
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+# Bloquear crawlers malos
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
