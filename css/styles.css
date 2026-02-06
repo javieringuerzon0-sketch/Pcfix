@@ -485,8 +485,8 @@ header.scrolled .logo-header {
   animation: gradient-xy 3s ease infinite;
 }
 
-/* Animación de pulso suave para el glow */
-@keyframes pulse-glow {
+/* Animación de pulso suave para el glow del botón */
+@keyframes pulse-glow-button {
   0%, 100% {
     opacity: 0.3;
     box-shadow: 0 0 20px rgba(0, 229, 255, 0.2);
@@ -498,7 +498,7 @@ header.scrolled .logo-header {
 }
 
 .animate-pulse-glow {
-  animation: pulse-glow 2s ease-in-out infinite;
+  animation: pulse-glow-button 2s ease-in-out infinite;
 }
 
 /* Efecto shimmer mejorado */
