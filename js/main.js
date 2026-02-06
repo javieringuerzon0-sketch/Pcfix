@@ -246,39 +246,71 @@ function initTestimonialsSlider() {
   const sliderWidth = slider.offsetWidth;
   const maxScroll = trackWidth - sliderWidth;
 
+  // Variables para suavizado del movimiento
+  let currentTranslate = 0;
+  const smoothFactor = 0.15; // Factor de suavizado (0.1 = más suave, 0.5 = más rápido)
+  const sensitivity = 0.8; // Reducir sensibilidad (0.5 = menos sensible, 1.0 = normal)
+
   const handleMouseMove = (e) => {
     const rect = slider.getBoundingClientRect();
-    const mouseX = e.clientX - rect.left; // Posición X del mouse dentro del contenedor
+    const mouseX = e.clientX - rect.left;
 
     // Calculamos el porcentaje de posición (0 a 1)
     let percentage = mouseX / sliderWidth;
 
-    // Limitamos entre 0 y 1 por seguridad
+    // Limitamos entre 0 y 1
     percentage = Math.max(0, Math.min(1, percentage));
 
-    // Mapeamos el porcentaje al rango de movimiento del track
-    // (Invertimos para que al mover a la derecha, el track se mueva a la izquierda)
-    const targetTranslate = -(percentage * maxScroll);
+    // Aplicamos factor de sensibilidad reducida
+    // Centramos el rango: mapeo suave desde el centro
+    const centerOffset = 0.5;
+    const adjustedPercentage = centerOffset + (percentage - centerOffset) * sensitivity;
+    const clampedPercentage = Math.max(0, Math.min(1, adjustedPercentage));
 
-    // Aplicamos con suavidad vía CSS
-    track.style.transform = `translateX(${targetTranslate}px)`;
+    // Target position
+    const targetTranslate = -(clampedPercentage * maxScroll);
+
+    // Interpolación suave (lerp)
+    currentTranslate += (targetTranslate - currentTranslate) * smoothFactor;
+
+    // Aplicamos el movimiento suavizado
+    track.style.transform = `translateX(${currentTranslate}px)`;
   }
 
-  // Añadimos suavidad al movimiento en el CSS (ajustado para ser más despacio)
-  track.style.transition = 'transform 1.2s cubic-bezier(0.23, 1, 0.32, 1)';
+  // Transición CSS más lenta y suave
+  track.style.transition = 'transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+
+  // Animación continua para suavizado
+  let animationFrame;
+  const animate = () => {
+    animationFrame = requestAnimationFrame(animate);
+  };
+  animate();
 
   slider.addEventListener('mousemove', handleMouseMove);
 
-  // Soporte para touch (opcional, mapeando el toque)
+  // Soporte para touch
   slider.addEventListener('touchmove', (e) => {
     const touch = e.touches[0];
     const rect = slider.getBoundingClientRect();
     const touchX = touch.clientX - rect.left;
     let percentage = touchX / sliderWidth;
     percentage = Math.max(0, Math.min(1, percentage));
-    const targetTranslate = -(percentage * maxScroll);
-    track.style.transform = `translateX(${targetTranslate}px)`;
+
+    // Aplicar misma lógica de sensibilidad
+    const centerOffset = 0.5;
+    const adjustedPercentage = centerOffset + (percentage - centerOffset) * sensitivity;
+    const clampedPercentage = Math.max(0, Math.min(1, adjustedPercentage));
+
+    const targetTranslate = -(clampedPercentage * maxScroll);
+    currentTranslate += (targetTranslate - currentTranslate) * smoothFactor;
+    track.style.transform = `translateX(${currentTranslate}px)`;
   }, { passive: true });
+
+  // Cleanup
+  return () => {
+    if (animationFrame) cancelAnimationFrame(animationFrame);
+  };
 }
 
 // Inicializar componentes al cargar el DOM
