@@ -95,8 +95,8 @@ if (contactForm) {
     const email = contactForm.querySelector('input[placeholder="tu@email.com"]').value;
     const message = contactForm.querySelector('textarea').value;
 
-    const whatsappMessage = `Hola PcFix, mi nombre es ${name} (${email}). Mi consulta es: ${message}`;
-    const whatsappUrl = `https://wa.me/526121972004?text=${encodeURIComponent(whatsappMessage)}`;
+    const whatsappMessage = `Hola ServiExpress, mi nombre es ${name} (${email}). Mi consulta es: ${message}`;
+    const whatsappUrl = `https://wa.me/526123483327?text=${encodeURIComponent(whatsappMessage)}`;
 
     window.open(whatsappUrl, '_blank');
     contactForm.reset();
