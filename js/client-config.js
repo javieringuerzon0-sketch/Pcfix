@@ -44,8 +44,8 @@ const CLIENT_CONFIG = {
 
   // FOOTER
   footerYear: "2025",
-  footerCompany: "PcFix, Inc.",
-  footerSlogan: "Reparación Profesional de Computadoras"
+  footerCompany: "ServiExpress Electrónik",
+  footerSlogan: "Reparación Profesional de Dispositivos Electrónicos"
 };
 
 // Exportar configuración
