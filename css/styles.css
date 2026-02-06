@@ -361,6 +361,11 @@ header.scrolled .logo-header {
   width: 100%;
 }
 
+/* Ocultar scrollbar en móviles pero mantener funcionalidad */
+.testimonials-slider-container::-webkit-scrollbar {
+  display: none;
+}
+
 .testimonials-slider-container:active {
   cursor: grabbing;
 }

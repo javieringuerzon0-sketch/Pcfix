@@ -241,15 +241,36 @@ function initTestimonialsSlider() {
 
   if (!slider || !track) return;
 
-  // En esta versión no clonamos, usamos el ancho real para un mapeo preciso
+  // Detectar si es dispositivo táctil
+  const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+
+  // En móviles/tablets: usar scroll nativo
+  if (isTouchDevice) {
+    // Hacer el slider scrolleable
+    slider.style.overflowX = 'auto';
+    slider.style.scrollBehavior = 'smooth';
+    slider.style.webkitOverflowScrolling = 'touch';
+
+    // Ocultar scrollbar pero mantener funcionalidad
+    slider.style.scrollbarWidth = 'none'; // Firefox
+    slider.style.msOverflowStyle = 'none'; // IE/Edge
+
+    // Remover transiciones del track para scroll nativo
+    track.style.transition = 'none';
+    track.style.transform = 'none';
+
+    return; // Salir, no usar tracking en móviles
+  }
+
+  // DESKTOP: Usar tracking de mouse suavizado
   const trackWidth = track.scrollWidth;
   const sliderWidth = slider.offsetWidth;
   const maxScroll = trackWidth - sliderWidth;
 
   // Variables para suavizado del movimiento
   let currentTranslate = 0;
-  const smoothFactor = 0.15; // Factor de suavizado (0.1 = más suave, 0.5 = más rápido)
-  const sensitivity = 0.8; // Reducir sensibilidad (0.5 = menos sensible, 1.0 = normal)
+  const smoothFactor = 0.1; // Más suave para desktop
+  const sensitivity = 0.7; // Menos sensible
 
   const handleMouseMove = (e) => {
     const rect = slider.getBoundingClientRect();
@@ -262,7 +283,6 @@ function initTestimonialsSlider() {
     percentage = Math.max(0, Math.min(1, percentage));
 
     // Aplicamos factor de sensibilidad reducida
-    // Centramos el rango: mapeo suave desde el centro
     const centerOffset = 0.5;
     const adjustedPercentage = centerOffset + (percentage - centerOffset) * sensitivity;
     const clampedPercentage = Math.max(0, Math.min(1, adjustedPercentage));
@@ -277,8 +297,8 @@ function initTestimonialsSlider() {
     track.style.transform = `translateX(${currentTranslate}px)`;
   }
 
-  // Transición CSS más lenta y suave
-  track.style.transition = 'transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+  // Transición CSS suave
+  track.style.transition = 'transform 0.2s ease-out';
 
   // Animación continua para suavizado
   let animationFrame;
@@ -288,24 +308,6 @@ function initTestimonialsSlider() {
   animate();
 
   slider.addEventListener('mousemove', handleMouseMove);
-
-  // Soporte para touch
-  slider.addEventListener('touchmove', (e) => {
-    const touch = e.touches[0];
-    const rect = slider.getBoundingClientRect();
-    const touchX = touch.clientX - rect.left;
-    let percentage = touchX / sliderWidth;
-    percentage = Math.max(0, Math.min(1, percentage));
-
-    // Aplicar misma lógica de sensibilidad
-    const centerOffset = 0.5;
-    const adjustedPercentage = centerOffset + (percentage - centerOffset) * sensitivity;
-    const clampedPercentage = Math.max(0, Math.min(1, adjustedPercentage));
-
-    const targetTranslate = -(clampedPercentage * maxScroll);
-    currentTranslate += (targetTranslate - currentTranslate) * smoothFactor;
-    track.style.transform = `translateX(${currentTranslate}px)`;
-  }, { passive: true });
 
   // Cleanup
   return () => {
