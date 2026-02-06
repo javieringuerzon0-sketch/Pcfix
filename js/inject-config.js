@@ -50,6 +50,21 @@
     // ACTUALIZAR UBICACIÓN
     updateTextContent('.location-badge', config.location);
 
+    // ACTUALIZAR ESTADÍSTICAS DEL HERO
+    if (config.stats) {
+      // Stats principales (visibles siempre)
+      updateStatValue(0, config.stats.repairs || '500+');
+      updateStatValue(1, config.stats.support || '24');
+
+      // Stats slide 2
+      updateStatValue(2, config.stats.satisfaction || '98');
+      updateStatValue(3, config.stats.experience || '5+');
+
+      // Stats slide 3
+      updateStatValue(4, config.stats.guarantee || '100');
+      updateStatValue(5, config.stats.response || '48');
+    }
+
     // ACTUALIZAR FOOTER
     updateTextContent('#footer-year', config.footerYear);
     updateTextContent('#footer-company', config.footerCompany);
@@ -90,5 +105,29 @@
       const newHref = currentHref.replace(/wa\.me\/\d+/, `wa.me/${phone}`);
       link.setAttribute('href', newHref);
     });
+  }
+
+  function updateStatValue(index, value) {
+    const statSlides = document.querySelectorAll('.stat-slide');
+    if (statSlides.length === 0) return;
+
+    // Calcular qué slide contiene esta estadística (2 stats por slide)
+    const slideIndex = Math.floor(index / 2);
+    const statIndex = index % 2;
+
+    if (slideIndex < statSlides.length) {
+      const slide = statSlides[slideIndex];
+      const statElements = slide.querySelectorAll('.text-3xl');
+      if (statElements[statIndex]) {
+        const currentText = statElements[statIndex].innerHTML;
+        // Mantener la estructura del span interno si existe
+        if (currentText.includes('<span')) {
+          const parts = currentText.split('<span');
+          statElements[statIndex].innerHTML = value + '<span' + parts[1];
+        } else {
+          statElements[statIndex].textContent = value;
+        }
+      }
+    }
   }
 })();
