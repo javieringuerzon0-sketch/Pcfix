@@ -46,6 +46,7 @@
     // ACTUALIZAR ENLACES DE CONTACTO
     updateWhatsAppLinks(config.whatsapp);
     updateElements('a[href*="facebook.com"]', 'href', config.facebook);
+    updateTextContent('#contact-email', config.email);
 
     // ACTUALIZAR UBICACIÓN
     updateTextContent('.location-badge', config.location);

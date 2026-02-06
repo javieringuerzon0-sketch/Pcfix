@@ -23,8 +23,8 @@ const CLIENT_CONFIG = {
   locationFull: "La Paz, Baja California Sur",
 
   // BRANDING
-  logo: "assets/images/pcfix-clean-pro.svg", // TODO: Cambiar por logo de ServiExpress
-  favicon: "assets/images/pcfix-clean-pro.svg", // TODO: Cambiar por favicon de ServiExpress
+  logo: "assets/images/serviexpress-logo.svg",
+  favicon: "assets/images/serviexpress-logo.svg"
 
   // SEO
   metaTitle: "ServiExpress Electrónik | Reparación Profesional de Dispositivos Electrónicos",
