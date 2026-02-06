@@ -234,85 +234,32 @@ function updateClock() {
   dateElement.textContent = `${weekday} • ${day} de ${month}, ${year}`;
 }
 
-// ===== TESTIMONIALS SLIDER LOGIC (HOVER TRACKING) =====
+// ===== TESTIMONIALS SLIDER LOGIC (SCROLL NATIVO) =====
 function initTestimonialsSlider() {
   const slider = document.getElementById('testimonialsSlider');
   const track = document.getElementById('testimonialsTrack');
 
   if (!slider || !track) return;
 
-  // Detectar si es dispositivo táctil
-  const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+  // Usar scroll nativo en TODOS los dispositivos (móvil y PC)
+  // Hacer el slider scrolleable
+  slider.style.overflowX = 'auto';
+  slider.style.scrollBehavior = 'smooth';
+  slider.style.webkitOverflowScrolling = 'touch';
 
-  // En móviles/tablets: usar scroll nativo
-  if (isTouchDevice) {
-    // Hacer el slider scrolleable
-    slider.style.overflowX = 'auto';
-    slider.style.scrollBehavior = 'smooth';
-    slider.style.webkitOverflowScrolling = 'touch';
+  // Ocultar scrollbar pero mantener funcionalidad
+  slider.style.scrollbarWidth = 'none'; // Firefox
+  slider.style.msOverflowStyle = 'none'; // IE/Edge
 
-    // Ocultar scrollbar pero mantener funcionalidad
-    slider.style.scrollbarWidth = 'none'; // Firefox
-    slider.style.msOverflowStyle = 'none'; // IE/Edge
+  // Remover transiciones del track para scroll nativo
+  track.style.transition = 'none';
+  track.style.transform = 'none';
 
-    // Remover transiciones del track para scroll nativo
-    track.style.transition = 'none';
-    track.style.transform = 'none';
-
-    return; // Salir, no usar tracking en móviles
-  }
-
-  // DESKTOP: Usar tracking de mouse suavizado
-  const trackWidth = track.scrollWidth;
-  const sliderWidth = slider.offsetWidth;
-  const maxScroll = trackWidth - sliderWidth;
-
-  // Variables para suavizado del movimiento
-  let currentTranslate = 0;
-  const smoothFactor = 0.1; // Más suave para desktop
-  const sensitivity = 0.7; // Menos sensible
-
-  const handleMouseMove = (e) => {
-    const rect = slider.getBoundingClientRect();
-    const mouseX = e.clientX - rect.left;
-
-    // Calculamos el porcentaje de posición (0 a 1)
-    let percentage = mouseX / sliderWidth;
-
-    // Limitamos entre 0 y 1
-    percentage = Math.max(0, Math.min(1, percentage));
-
-    // Aplicamos factor de sensibilidad reducida
-    const centerOffset = 0.5;
-    const adjustedPercentage = centerOffset + (percentage - centerOffset) * sensitivity;
-    const clampedPercentage = Math.max(0, Math.min(1, adjustedPercentage));
-
-    // Target position
-    const targetTranslate = -(clampedPercentage * maxScroll);
-
-    // Interpolación suave (lerp)
-    currentTranslate += (targetTranslate - currentTranslate) * smoothFactor;
-
-    // Aplicamos el movimiento suavizado
-    track.style.transform = `translateX(${currentTranslate}px)`;
-  }
-
-  // Transición CSS suave
-  track.style.transition = 'transform 0.2s ease-out';
-
-  // Animación continua para suavizado
-  let animationFrame;
-  const animate = () => {
-    animationFrame = requestAnimationFrame(animate);
-  };
-  animate();
-
-  slider.addEventListener('mousemove', handleMouseMove);
-
-  // Cleanup
-  return () => {
-    if (animationFrame) cancelAnimationFrame(animationFrame);
-  };
+  // Scroll suave con la rueda del mouse en desktop
+  slider.addEventListener('wheel', (e) => {
+    e.preventDefault();
+    slider.scrollLeft += e.deltaY;
+  }, { passive: false });
 }
 
 // Inicializar componentes al cargar el DOM
