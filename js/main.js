@@ -69,8 +69,17 @@ const menuBtn = document.getElementById('menuBtn');
 const mobileMenu = document.getElementById('mobileMenu');
 
 if (menuBtn && mobileMenu) {
+  // Toggle menu al hacer clic en el botón
   menuBtn.addEventListener('click', () => {
     mobileMenu.classList.toggle('hidden');
+  });
+
+  // Cerrar menú al hacer clic en un enlace
+  const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+  mobileMenuLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+    });
   });
 }
 
