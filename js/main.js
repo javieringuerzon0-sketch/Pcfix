@@ -255,22 +255,27 @@ function initTestimonialsSlider() {
     return;
   }
 
-  // DESKTOP: Mouse tracking simple y fluido
+  // DESKTOP: Mouse tracking fluido sin saltos
   const maxScroll = track.scrollWidth - slider.offsetWidth;
   let targetScroll = 0;
   let currentScroll = 0;
+
+  // Eliminar cualquier transición CSS
+  track.style.transition = 'none';
 
   slider.addEventListener('mousemove', (e) => {
     const rect = slider.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const percent = x / rect.width;
-    targetScroll = percent * maxScroll;
+    // Invertir dirección: mouse derecha = tarjetas derecha
+    targetScroll = -(percent * maxScroll);
   });
 
-  // Animación suave continua
+  // Animación ultra suave continua (sin saltos)
   function animate() {
-    currentScroll += (targetScroll - currentScroll) * 0.1;
-    track.style.transform = `translateX(-${currentScroll}px)`;
+    // Factor 0.05 = movimiento muy suave
+    currentScroll += (targetScroll - currentScroll) * 0.05;
+    track.style.transform = `translateX(${currentScroll}px)`;
     requestAnimationFrame(animate);
   }
   animate();
