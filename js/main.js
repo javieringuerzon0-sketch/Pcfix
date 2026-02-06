@@ -234,32 +234,46 @@ function updateClock() {
   dateElement.textContent = `${weekday} • ${day} de ${month}, ${year}`;
 }
 
-// ===== TESTIMONIALS SLIDER LOGIC (SCROLL NATIVO) =====
+// ===== TESTIMONIALS SLIDER LOGIC (MOUSE TRACKING FLUIDO) =====
 function initTestimonialsSlider() {
   const slider = document.getElementById('testimonialsSlider');
   const track = document.getElementById('testimonialsTrack');
 
   if (!slider || !track) return;
 
-  // Usar scroll nativo en TODOS los dispositivos (móvil y PC)
-  // Hacer el slider scrolleable
-  slider.style.overflowX = 'auto';
-  slider.style.scrollBehavior = 'smooth';
-  slider.style.webkitOverflowScrolling = 'touch';
+  const isTouchDevice = 'ontouchstart' in window;
 
-  // Ocultar scrollbar pero mantener funcionalidad
-  slider.style.scrollbarWidth = 'none'; // Firefox
-  slider.style.msOverflowStyle = 'none'; // IE/Edge
+  // MÓVIL: Scroll nativo
+  if (isTouchDevice) {
+    slider.style.overflowX = 'auto';
+    slider.style.scrollBehavior = 'smooth';
+    slider.style.webkitOverflowScrolling = 'touch';
+    slider.style.scrollbarWidth = 'none';
+    slider.style.msOverflowStyle = 'none';
+    track.style.transition = 'none';
+    track.style.transform = 'none';
+    return;
+  }
 
-  // Remover transiciones del track para scroll nativo
-  track.style.transition = 'none';
-  track.style.transform = 'none';
+  // DESKTOP: Mouse tracking simple y fluido
+  const maxScroll = track.scrollWidth - slider.offsetWidth;
+  let targetScroll = 0;
+  let currentScroll = 0;
 
-  // Scroll suave con la rueda del mouse en desktop
-  slider.addEventListener('wheel', (e) => {
-    e.preventDefault();
-    slider.scrollLeft += e.deltaY;
-  }, { passive: false });
+  slider.addEventListener('mousemove', (e) => {
+    const rect = slider.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const percent = x / rect.width;
+    targetScroll = percent * maxScroll;
+  });
+
+  // Animación suave continua
+  function animate() {
+    currentScroll += (targetScroll - currentScroll) * 0.1;
+    track.style.transform = `translateX(-${currentScroll}px)`;
+    requestAnimationFrame(animate);
+  }
+  animate();
 }
 
 // Inicializar componentes al cargar el DOM
