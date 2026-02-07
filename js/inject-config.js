@@ -19,15 +19,30 @@
 
     const config = CLIENT_CONFIG;
 
+    const resolvedUrl = config.canonicalUrl || config.ogUrl || window.location.origin;
+    const resolvedImage = config.ogImage || config.twitterImage || config.favicon || config.logo;
+
     // ACTUALIZAR TÍTULO DE LA PÁGINA
-    document.title = config.metaTitle;
+    if (config.metaTitle) {
+      document.title = config.metaTitle;
+    }
 
     // ACTUALIZAR META TAGS
     updateMetaTag('name', 'description', config.metaDescription);
+    updateMetaTag('name', 'keywords', config.keywords);
     updateMetaTag('property', 'og:title', config.metaTitle);
     updateMetaTag('property', 'og:description', config.metaDescription);
-    updateMetaTag('property', 'og:url', config.ogUrl);
-    updateMetaTag('property', 'og:image', config.ogImage);
+    updateMetaTag('property', 'og:url', resolvedUrl);
+    updateMetaTag('property', 'og:image', resolvedImage);
+    updateMetaTag('name', 'twitter:title', config.metaTitle);
+    updateMetaTag('name', 'twitter:description', config.metaDescription);
+    updateMetaTag('name', 'twitter:image', resolvedImage);
+    updateMetaTag('name', 'twitter:card', config.twitterCard);
+
+    // ACTUALIZAR LINKS
+    updateLinkTag('canonical', resolvedUrl);
+    updateLinkTag('apple-touch-icon', config.favicon || config.logo);
+    updateLinkTag('mask-icon', config.favicon || config.logo);
 
     // ACTUALIZAR FAVICON
     updateFavicon(config.favicon);
@@ -75,13 +90,21 @@
 
   // FUNCIONES HELPER
   function updateMetaTag(attr, value, content) {
+    if (!content) return;
     const tag = document.querySelector(`meta[${attr}="${value}"]`);
     if (tag) tag.setAttribute('content', content);
   }
 
   function updateFavicon(href) {
+    if (!href) return;
     const favicon = document.querySelector('link[rel="icon"]');
     if (favicon) favicon.setAttribute('href', href);
+  }
+
+  function updateLinkTag(rel, href) {
+    if (!href) return;
+    const tag = document.querySelector(`link[rel="${rel}"]`);
+    if (tag) tag.setAttribute('href', href);
   }
 
   function updateElements(selector, attr, value) {

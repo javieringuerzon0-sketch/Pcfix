@@ -90,6 +90,12 @@ const CLIENT_CONFIG = {
   // Recomendación: Clara, concisa, con palabras clave (max 160 caracteres)
   metaDescription: "Servicios profesionales de alta calidad en Tu Ciudad. Expertos en [tu servicio]. Atención personalizada y resultados garantizados.",
 
+  // Palabras clave principales (separadas por coma)
+  keywords: "servicio, reparacion, tu ciudad, tu especialidad",
+
+  // URL canonical (opcional). Si lo dejas vacio, se usa la URL actual
+  canonicalUrl: "",
+
   // URL completa de tu sitio (termina con /)
   // Ejemplo: "https://mi-negocio.vercel.app/"
   ogUrl: "https://tu-sitio.vercel.app/",
@@ -97,6 +103,12 @@ const CLIENT_CONFIG = {
   // Imagen de vista previa para redes sociales (Open Graph)
   // Recomendación: 1200x630px, formato JPG o PNG
   ogImage: "assets/images/og-preview.jpg",
+
+  // Twitter Card (opcional)
+  twitterCard: "summary_large_image",
+
+  // Imagen para Twitter (si no se define, se usa ogImage)
+  twitterImage: "assets/images/og-preview.jpg",
 
   // ================================================
   // ESTADÍSTICAS DEL HERO

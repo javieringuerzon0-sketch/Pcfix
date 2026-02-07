@@ -24,13 +24,17 @@ const CLIENT_CONFIG = {
 
   // BRANDING
   logo: "assets/images/serviexpress-logo.svg",
-  favicon: "assets/images/serviexpress-logo.svg"
+  favicon: "assets/images/serviexpress-logo.svg",
 
   // SEO
   metaTitle: "ServiExpress Electrónik | Reparación Profesional de Dispositivos Electrónicos",
   metaDescription: "Especialistas en reparación de smartphones, tablets, computadoras y electrónicos en La Paz, BCS. Servicio técnico garantizado 24/7.",
-  ogUrl: "https://serviexpress-electronik.vercel.app/",
-  ogImage: "assets/images/og-preview.jpg",
+  keywords: "reparación computadoras La Paz, servicio técnico La Paz BCS, reparación laptops, reparación celulares, mantenimiento PC, técnico computadoras La Paz, reparación electrónicos BCS",
+  canonicalUrl: "",
+  ogUrl: "",
+  ogImage: "assets/images/serviexpress-logo.svg",
+  twitterCard: "summary_large_image",
+  twitterImage: "assets/images/serviexpress-logo.svg",
 
   // ESTADÍSTICAS (Hero)
   stats: {
